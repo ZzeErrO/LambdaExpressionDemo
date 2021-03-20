@@ -11,9 +11,13 @@ namespace LambdaExpressionsDemo
         static void Main(string[] args)
         {
             List<Person> listPersonInCity = new List<Person>();
+            int sum = 0;
             AddRecords(listPersonInCity);
             Retriving_TopTwoRecord_ForAges_LessThanSixty(listPersonInCity);
             CheckingForTeenagesPerson(listPersonInCity);
+            listPersonInCity.ForEach(x => sum+=x.Age);
+            Console.WriteLine("Average of Records");
+            Console.WriteLine((double)sum/listPersonInCity.Count);
             Console.ReadKey();
         }
 
@@ -29,7 +33,7 @@ namespace LambdaExpressionsDemo
             listPersonInCity.Add(new Person("203456883", "Mac", "126 Province Ave, Baltimore,NY", 85));
             listPersonInCity.Add(new Person("203456884", "SAM", "126 Province Ave, Baltimore,NY", 95));
             // Console.WriteLine(listPersonInCity.ToString());
-            // listPersonInCity.ForEach(x => Console.WriteLine("{0}\t",x.Name.ToString()))
+            listPersonInCity.ForEach(x => Console.WriteLine("{0}\t", x.Name.ToString()));
         }
 
         private static void Retriving_TopTwoRecord_ForAges_LessThanSixty(List<Person> listPersonsInCity)
@@ -55,5 +59,6 @@ namespace LambdaExpressionsDemo
             }
 
         }
+
     }
 }
