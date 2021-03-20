@@ -18,6 +18,7 @@ namespace LambdaExpressionsDemo
             listPersonInCity.ForEach(x => sum+=x.Age);
             Console.WriteLine("Average of Records");
             Console.WriteLine((double)sum/listPersonInCity.Count);
+            CheckAName(listPersonInCity);
             Console.ReadKey();
         }
 
@@ -33,7 +34,7 @@ namespace LambdaExpressionsDemo
             listPersonInCity.Add(new Person("203456883", "Mac", "126 Province Ave, Baltimore,NY", 85));
             listPersonInCity.Add(new Person("203456884", "SAM", "126 Province Ave, Baltimore,NY", 95));
             // Console.WriteLine(listPersonInCity.ToString());
-            listPersonInCity.ForEach(x => Console.WriteLine("{0}\t", x.Name.ToString()));
+            //listPersonInCity.ForEach(x => Console.WriteLine("{0}\t", x.Name.ToString()));
         }
 
         private static void Retriving_TopTwoRecord_ForAges_LessThanSixty(List<Person> listPersonsInCity)
@@ -58,6 +59,16 @@ namespace LambdaExpressionsDemo
                 Console.WriteLine("Name: " + person.Name + "\t\tAge: " + person.Age);
             }
 
+        }
+
+        private static void CheckAName(List<Person> listPersonsInCity)
+        {
+            Console.WriteLine("Write Name that you want to ");
+            string name_Check = Console.ReadLine();
+            if (listPersonsInCity.Any(e => e.Name == name_Check))
+                Console.WriteLine("Name is PRESENT in list");
+            else
+                Console.WriteLine("Name is NOT in list");
         }
 
     }
