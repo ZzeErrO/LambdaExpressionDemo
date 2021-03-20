@@ -19,6 +19,7 @@ namespace LambdaExpressionsDemo
             Console.WriteLine("Average of Records");
             Console.WriteLine((double)sum/listPersonInCity.Count);
             CheckAName(listPersonInCity);
+            Retriving_ForAges_MoreThanSixty(listPersonInCity);
             Console.ReadKey();
         }
 
@@ -69,6 +70,15 @@ namespace LambdaExpressionsDemo
                 Console.WriteLine("Name is PRESENT in list");
             else
                 Console.WriteLine("Name is NOT in list");
+        }
+
+        private static void Retriving_ForAges_MoreThanSixty(List<Person> listPersonsInCity)
+        {
+            Console.WriteLine("Records for Person Age more than 60 years");
+            foreach (Person person in listPersonsInCity.FindAll(e => (e.Age >= 60)).ToList())
+            {
+                Console.WriteLine("Name: " + person.Name + "\t\tAge: " + person.Age);
+            }
         }
 
     }
