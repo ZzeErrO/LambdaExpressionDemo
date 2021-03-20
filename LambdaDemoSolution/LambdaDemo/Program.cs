@@ -20,6 +20,7 @@ namespace LambdaExpressionsDemo
             Console.WriteLine((double)sum/listPersonInCity.Count);
             CheckAName(listPersonInCity);
             Retriving_ForAges_MoreThanSixty(listPersonInCity);
+            RemoveAName(listPersonInCity);
             Console.ReadKey();
         }
 
@@ -64,7 +65,7 @@ namespace LambdaExpressionsDemo
 
         private static void CheckAName(List<Person> listPersonsInCity)
         {
-            Console.WriteLine("Write Name that you want to ");
+            Console.WriteLine("Write Name that you want to Check");
             string name_Check = Console.ReadLine();
             if (listPersonsInCity.Any(e => e.Name == name_Check))
                 Console.WriteLine("Name is PRESENT in list");
@@ -79,6 +80,20 @@ namespace LambdaExpressionsDemo
             {
                 Console.WriteLine("Name: " + person.Name + "\t\tAge: " + person.Age);
             }
+        }
+
+        private static void RemoveAName(List<Person> listPersonsInCity)
+        {
+            Console.WriteLine("Write Name that you want to Remove ");
+            string name_Check = Console.ReadLine();
+            try
+            {
+                var itemToRemove = listPersonsInCity.Single(r => r.Name == name_Check);
+                listPersonsInCity.Remove(itemToRemove);
+            }
+            catch (Exception ex)
+            { Console.WriteLine(ex.Message); }
+            listPersonsInCity.ForEach(x => Console.WriteLine("{0}\t", x.Name.ToString()));
         }
 
     }
