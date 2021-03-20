@@ -13,7 +13,7 @@ namespace LambdaExpressionsDemo
             List<Person> listPersonInCity = new List<Person>();
             AddRecords(listPersonInCity);
             Retriving_TopTwoRecord_ForAges_LessThanSixty(listPersonInCity);
-            //CheckingForTeenagesPerson(listPersonInCity);
+            CheckingForTeenagesPerson(listPersonInCity);
             Console.ReadKey();
         }
 
@@ -34,10 +34,26 @@ namespace LambdaExpressionsDemo
 
         private static void Retriving_TopTwoRecord_ForAges_LessThanSixty(List<Person> listPersonsInCity)
         {
+            Console.WriteLine("Top 2 Records for Person Age less than 60 years");
             foreach (Person person in listPersonsInCity.FindAll(e => (e.Age < 60)).Take(2).ToList())
             {
                 Console.WriteLine("Name: " + person.Name + "\t\tAge: " + person.Age);
             }
+        }
+
+
+        private static void CheckingForTeenagesPerson(List<Person> listPersonsInCity)
+        {
+            if (listPersonsInCity.Any(e => e.Age >= 13 && e.Age <= 19))
+                Console.WriteLine("Yes, we have some teenages in list");
+            else
+                Console.WriteLine("No, we don't have some teenages in list");
+
+            foreach (Person person in listPersonsInCity.FindAll(e => (e.Age >= 13 && e.Age <= 18)).ToList())
+            {
+                Console.WriteLine("Name: " + person.Name + "\t\tAge: " + person.Age);
+            }
+
         }
     }
 }
